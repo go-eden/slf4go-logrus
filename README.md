@@ -45,7 +45,7 @@ func main() {
 }
 ```
 
-# Account
+# Notice 
 
 I haven't used `logrus` too much, so this library don't have lots of features currently.
 
