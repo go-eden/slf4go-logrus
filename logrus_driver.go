@@ -5,8 +5,8 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-// init setup slf4go's driver atomically
-func init() {
+// Init setup slf4go's driver atomically
+func Init() {
 	slog.SetDriver(&LogrusDriver{})
 }
 
@@ -27,43 +27,43 @@ func (d *LogrusDriver) Print(l *slog.Log) {
 	}
 	// execute logging
 	switch l.Level {
-	case slog.LEVEL_TRACE:
+	case slog.TraceLevel:
 		if l.Format == nil {
 			entry.Trace(l.Args...)
 		} else {
 			entry.Tracef(*l.Format, l.Args...)
 		}
-	case slog.LEVEL_DEBUG:
+	case slog.DebugLevel:
 		if l.Format == nil {
 			entry.Debug(l.Args...)
 		} else {
 			entry.Debugf(*l.Format, l.Args...)
 		}
-	case slog.LEVEL_INFO:
+	case slog.InfoLevel:
 		if l.Format == nil {
 			entry.Info(l.Args...)
 		} else {
 			entry.Infof(*l.Format, l.Args...)
 		}
-	case slog.LEVEL_WARN:
+	case slog.WarnLevel:
 		if l.Format == nil {
 			entry.Warn(l.Args...)
 		} else {
 			entry.Warnf(*l.Format, l.Args...)
 		}
-	case slog.LEVEL_ERROR:
+	case slog.ErrorLevel:
 		if l.Format == nil {
 			entry.Error(l.Args...)
 		} else {
 			entry.Errorf(*l.Format, l.Args...)
 		}
-	case slog.LEVEL_PANIC:
+	case slog.PanicLevel:
 		if l.Format == nil {
 			entry.Panic(l.Args...)
 		} else {
 			entry.Panicf(*l.Format, l.Args...)
 		}
-	case slog.LEVEL_FATAL:
+	case slog.FataLevel:
 		if l.Format == nil {
 			entry.Fatal(l.Args...)
 		} else {
@@ -72,6 +72,22 @@ func (d *LogrusDriver) Print(l *slog.Log) {
 	}
 }
 
-func (d *LogrusDriver) GetLevel(logger string) slog.Level {
-	return slog.LEVEL_TRACE // don't know
+func (d *LogrusDriver) GetLevel(logger string) (sl slog.Level) {
+	switch log.GetLevel() {
+	case log.TraceLevel:
+		sl = slog.TraceLevel
+	case log.DebugLevel:
+		sl = slog.DebugLevel
+	case log.InfoLevel:
+		sl = slog.InfoLevel
+	case log.WarnLevel:
+		sl = slog.WarnLevel
+	case log.ErrorLevel:
+		sl = slog.ErrorLevel
+	case log.PanicLevel:
+		sl = slog.PanicLevel
+	case log.FatalLevel:
+		sl = slog.FataLevel
+	}
+	return slog.TraceLevel // don't know
 }
