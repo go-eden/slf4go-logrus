@@ -1,4 +1,4 @@
-# slf4go-logrus
+# slf4go-logrus [![Build Status](https://travis-ci.org/go-eden/slf4go-logrus.svg?branch=master)](https://travis-ci.org/go-eden/slf4go-logrus)
 
 This is a default [`Driver`](https://github.com/go-eden/slf4go#driver) implementation for bridging [`slf4go`](https://github.com/go-eden/slf4go) and [`logrus`](https://travis-ci.org/sirupsen/logrus).
 
