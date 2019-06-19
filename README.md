@@ -1,8 +1,6 @@
 # slf4go-logrus
 
-This is a default `Driver` implementation for bridging `slf4go` and `logrus`.
-
-For more details, check [`Driver`](https://github.com/go-eden/slf4go#driver).
+This is a default [`Driver`](https://github.com/go-eden/slf4go#driver) implementation for bridging [`slf4go`](https://github.com/go-eden/slf4go) and [`logrus`](https://travis-ci.org/sirupsen/logrus).
 
 # Install
 
