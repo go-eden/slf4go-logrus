@@ -63,7 +63,7 @@ func (d *LogrusDriver) Print(l *slog.Log) {
 		} else {
 			entry.Panicf(*l.Format, l.Args...)
 		}
-	case slog.FataLevel:
+	case slog.FatalLevel:
 		if l.Format == nil {
 			entry.Fatal(l.Args...)
 		} else {
@@ -87,7 +87,7 @@ func (d *LogrusDriver) GetLevel(logger string) (sl slog.Level) {
 	case log.PanicLevel:
 		sl = slog.PanicLevel
 	case log.FatalLevel:
-		sl = slog.FataLevel
+		sl = slog.FatalLevel
 	}
 	return slog.TraceLevel // don't know
 }
